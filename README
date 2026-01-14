@@ -3,14 +3,12 @@
 ## Usage
 
 ### Set up iPXE boot menu
-
 ```bash
 cd ~/ipxe/src
 nano embed.ipxe
 ```
 
 ### embed.ipxe for PXE boot:
-
 ```ipxe
 #!ipxe
 dhcp && goto netboot || goto dhcperror
@@ -24,7 +22,6 @@ prompt --key s --timeout 10000 Chainloading failed, hit 's' for the iPXE shell; 
 ```
 
 ### embed.ipxe for HTTP boot:
-
 ```ipxe
 #!ipxe
 dhcp && goto netboot || goto dhcperror
@@ -38,7 +35,6 @@ prompt --key s --timeout 10000 Chainloading failed, hit 's' for the iPXE shell; 
 ```
 
 ## Add ping and NTFS support to iPXE
-
 ```bash
 cd ~/ipxe/src
 
@@ -53,7 +49,6 @@ sed -i 's/\/\/#define\ POWEROFF/#define\ POWEROFF/' config/general.h
 ```
 
 ## Build iPXE
-
 ```bash
 cd ~/ipxe/src
 make bin-x86_64-efi/ipxe.efi EMBED=embed.ipxe
@@ -62,17 +57,14 @@ make bin-x86_64-efi/ipxe.efi EMBED=embed.ipxe
 ## Copy iPXE network boot firmware
 
 > **Note:** This should be served via TFTP or HTTP (TFTP for iPXE boot, NGINX for HTTP boot)
-
 ```bash
 cp ~/ipxe/src/bin-x86_64-efi/ipxe.efi /pxe-boot/ipxe.efi
 ```
 
 ## Hello World iPXE Menu
-
 ```bash
 nano /pxe-boot/main.ipxe
 ```
-
 ```ipxe
 #!ipxe
 :MENU
