@@ -30,7 +30,7 @@ dhcp && goto netboot || goto dhcperror
 prompt --key s --timeout 10000 DHCP failed, hit 's' for the iPXE shell; reboot in 10 seconds && shell || reboot
 
 :netboot
-chain http://10.30.112.98/main.ipxe ||
+chain http://192.168.1.1/main.ipxe ||
 prompt --key s --timeout 10000 Chainloading failed, hit 's' for the iPXE shell; reboot in 10 seconds && shell || reboot
 ```
 
